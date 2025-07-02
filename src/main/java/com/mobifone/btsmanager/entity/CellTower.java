@@ -18,9 +18,24 @@ public class CellTower {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private String radio;
     private String name;
     private int mcc;
     private int mnc;
+    private int net;
+    private int area;
+    //cellID
+    private int cell;
+    private int unit;
+    private int range;
+    private int samples;
+    private double lat;
+    private double lon;
+    private int changeable;
+    private int created;
+    private int updated;
+    private int averageSignal;
+    private String type;
 
     public int getMcc() {
         return mcc;
@@ -54,29 +69,6 @@ public class CellTower {
         this.id = id;
     }
 
-    public int getCellId() {
-        return cellId;
-    }
-
-    public void setCellId(int cellId) {
-        this.cellId = cellId;
-    }
-
-    public String getNet() {
-        return net;
-    }
-
-    public void setNet(String net) {
-        this.net = net;
-    }
-
-    public String getBand() {
-        return band;
-    }
-
-    public void setBand(String band) {
-        this.band = band;
-    }
 
     public double getLat() {
         return lat;
@@ -102,22 +94,91 @@ public class CellTower {
         this.type = type;
     }
 
-    public Date getLastSeen() {
-        return lastSeen;
+    public String getRadio() {
+        return radio;
     }
 
-    public void setLastSeen(Date lastSeen) {
-        this.lastSeen = lastSeen;
+    public void setRadio(String radio) {
+        this.radio = radio;
     }
 
-    private int cellId;
-    private String net;
-    private String band;
-    private double lat;
-    private double lon;
-    private String type;
+    public int getNet() {
+        return net;
+    }
 
-    @Column(name = "last_seen")
-    private Date lastSeen;
+    public void setNet(int net) {
+        this.net = net;
+    }
 
+    public int getArea() {
+        return area;
+    }
+
+    public void setArea(int area) {
+        this.area = area;
+    }
+
+    public int getCell() {
+        return cell;
+    }
+
+    public void setCell(int cell) {
+        this.cell = cell;
+    }
+
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public int getSamples() {
+        return samples;
+    }
+
+    public void setSamples(int samples) {
+        this.samples = samples;
+    }
+
+    public int getChangeable() {
+        return changeable;
+    }
+
+    public void setChangeable(int changeable) {
+        this.changeable = changeable;
+    }
+
+    public int getCreated() {
+        return created;
+    }
+
+    public void setCreated(int created) {
+        this.created = created;
+    }
+
+    public int getAverageSignal() {
+        return averageSignal;
+    }
+
+    public void setAverageSignal(int averageSignal) {
+        this.averageSignal = averageSignal;
+    }
+
+    public int getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(int updated) {
+        this.updated = updated;
+    }
 }

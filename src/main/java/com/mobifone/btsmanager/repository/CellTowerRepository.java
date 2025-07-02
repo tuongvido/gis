@@ -8,5 +8,4 @@ import java.util.List;
 
 @Repository
 public interface CellTowerRepository extends JpaRepository<CellTower, Integer> {
-    List<CellTower> findByMccAndMncAndNet(int mcc, int mnc, String net);
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/towers")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CellTowerController {
 
     private final ICellTowerService service;

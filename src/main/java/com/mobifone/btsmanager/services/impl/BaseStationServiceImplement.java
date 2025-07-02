@@ -1,18 +1,23 @@
 package com.mobifone.btsmanager.services.impl;
 
-import com.mobifone.btsmanager.entity.BaseStation;
-import com.mobifone.btsmanager.repository.BaseStationRepository;
+import com.mobifone.btsmanager.entity.CellTower;
+import com.mobifone.btsmanager.repository.CellTowerRepository;
 import com.mobifone.btsmanager.services.IBaseStationService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-@RequiredArgsConstructor
 public class BaseStationServiceImplement implements IBaseStationService {
-    private BaseStationRepository baseStationRepository;
+    private CellTowerRepository cellTowerRepository;
+
+    public BaseStationServiceImplement(CellTowerRepository cellTowerRepository) {
+        this.cellTowerRepository = cellTowerRepository;
+    }
 
     @Override
-    public BaseStation insertBaseStation(BaseStation baseStation) {
-        return baseStationRepository.save(baseStation);
+    public int saveAll(List<CellTower> cellTowers) {
+        cellTowerRepository.saveAll(cellTowers);
+        return 0;
     }
 }
