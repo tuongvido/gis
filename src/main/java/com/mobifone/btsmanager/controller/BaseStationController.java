@@ -30,7 +30,7 @@ public class BaseStationController {
     @PostMapping
     public void importFromCsv() {
         try {
-            String filePath = "D:\\download\\data.csv";
+            String filePath = System.getProperty("user.home") + "/Documents/GIS/data.csv";
             Reader reader = Files.newBufferedReader(Paths.get(filePath), StandardCharsets.UTF_8);
             CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(1).build();
             List<CellTower> batch = new ArrayList<>();
