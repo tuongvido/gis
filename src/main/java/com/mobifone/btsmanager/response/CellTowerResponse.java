@@ -15,6 +15,7 @@ public class CellTowerResponse {
     private int mcc;
     private int mnc;
     private int net;
+    
 
     public Integer getId() {
         return id;
@@ -209,6 +210,13 @@ public class CellTowerResponse {
     private Long userUpdated;
     private Long regionId;
     private String status;
+    private String nameDistrict;
 
+    public String getNameDistrict() {
+        return nameDistrict;
+    }
 
+    public void setNameDistrict(String nameDistrict) {
+        this.nameDistrict = nameDistrict;
+    }
 }
