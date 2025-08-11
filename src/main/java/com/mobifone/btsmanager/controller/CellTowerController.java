@@ -1,26 +1,52 @@
 package com.mobifone.btsmanager.controller;
 
 import com.mobifone.btsmanager.dto.SearchTowerDto;
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.mobifone.btsmanager.entity.CellTower;
+import com.mobifone.btsmanager.entity.Region;
+import com.mobifone.btsmanager.repository.RegionRepository;
+import com.mobifone.btsmanager.response.CellTowerResponse;
 import com.mobifone.btsmanager.services.ICellTowerService;
+import com.mobifone.btsmanager.services.IRegionService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/towers")
 @CrossOrigin(origins = "http://localhost:3000")
 public class CellTowerController {
 
-    private final ICellTowerService service;
+    private  ICellTowerService service;
+    private  IRegionService regionService;
 
-    public CellTowerController(ICellTowerService service) {
+    public CellTowerController(ICellTowerService service, IRegionService regionService) {
+        this.regionService = regionService;
         this.service = service;
     }
 
     @GetMapping
-    public List<CellTower> getAll() {
-        return service.getAllTowers();
+    public List<CellTowerResponse> getAll() {
+        List<CellTower> entities = service.getMobifoneCellTowerAtHCM();
+        List<CellTowerResponse> responses = new ArrayList<>();
+        Map<Long, String> mapRegion = regionService.getAllRegion().stream().collect(Collectors.toMap(Region::getId, Region::getName));
+        String[] statuses = {"ONLINE", "OFFLINE", "MAINTENANCE"};
+        for (int i = 0; i < entities.size(); i++) {
+            CellTower entity = entities.get(i);
+            CellTowerResponse dto = new CellTowerResponse();
+            BeanUtils.copyProperties(entity, dto);
+
+            dto.setStatus(statuses[i % statuses.length]);
+            dto.setNameDistrict(mapRegion.get(entity.getRegionId()));
+            responses.add(dto);
+        }
+
+        return responses;
     }
 
     @PostMapping("/search")

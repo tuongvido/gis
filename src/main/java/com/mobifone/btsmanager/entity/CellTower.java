@@ -36,6 +36,9 @@ public class CellTower {
     private int updated;
     private int averageSignal;
     private String type;
+    private Long userCreated;
+    private Long userUpdated;
+    private Long regionId;
 
     public int getMcc() {
         return mcc;

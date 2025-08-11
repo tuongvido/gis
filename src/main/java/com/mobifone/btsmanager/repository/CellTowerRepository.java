@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface CellTowerRepository extends JpaRepository<CellTower, Integer> {
+    @Query("SELECT c FROM CellTower c WHERE c.mcc = 452 AND c.net = 2 AND c.lat BETWEEN 10.3 AND 11.2 AND c.lon BETWEEN 106.3 AND 107.1")
+    List<CellTower> findMobifoneInHCM();
 
 //    @Query("""
 //              SELECT c FROM CellTower c

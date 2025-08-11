@@ -23,7 +23,8 @@ public class CellTowerServiceImplement implements ICellTowerService {
 
     @Override
     public List<CellTower> getAllTowers() {
-        return cellTowerRepository.findAll();
+        Pageable limit = PageRequest.of(0, 100); // lấy 10 phần tử đầu tiên
+        return cellTowerRepository.findAll(limit).getContent();
     }
 
     @Override
@@ -48,5 +49,10 @@ public class CellTowerServiceImplement implements ICellTowerService {
     @Override
     public void deleteTower(int id) {
         cellTowerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<CellTower> getMobifoneCellTowerAtHCM() {
+        return cellTowerRepository.findMobifoneInHCM();
     }
 }

@@ -21,4 +21,6 @@ public interface ICellTowerService {
 
 
     public void deleteTower(int id) ;
+
+    public List<CellTower> getMobifoneCellTowerAtHCM();
 }
