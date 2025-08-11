@@ -1,5 +1,6 @@
 package com.mobifone.btsmanager.controller;
 
+import com.mobifone.btsmanager.dto.SearchTowerDto;
 import com.mobifone.btsmanager.entity.CellTower;
 import com.mobifone.btsmanager.services.ICellTowerService;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,11 @@ public class CellTowerController {
     @GetMapping
     public List<CellTower> getAll() {
         return service.getAllTowers();
+    }
+
+    @PostMapping("/search")
+    public List<CellTower> search(@RequestBody SearchTowerDto searchTowerDto) {
+        return service.search(searchTowerDto);
     }
 
     @GetMapping("/{id}")
