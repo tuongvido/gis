@@ -5,11 +5,13 @@ import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.mobifone.btsmanager.entity.CellTower;
 import com.mobifone.btsmanager.entity.Region;
 import com.mobifone.btsmanager.repository.RegionRepository;
+import com.mobifone.btsmanager.response.ApiResponse;
 import com.mobifone.btsmanager.response.CellTowerResponse;
 import com.mobifone.btsmanager.services.ICellTowerService;
 import com.mobifone.btsmanager.services.IRegionService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -65,12 +67,14 @@ public class CellTowerController {
     }
 
     @PutMapping("/{id}")
-    public CellTower update(@PathVariable Integer id, @RequestBody CellTower tower) {
+    public CellTower update(@RequestBody CellTower tower) {
         return service.saveTower(tower);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    public ResponseEntity<ApiResponse<?>> delete(@PathVariable int id) {
         service.deleteTower(id);
+        return ResponseEntity.ok(ApiResponse.success());
     }
+
 }
