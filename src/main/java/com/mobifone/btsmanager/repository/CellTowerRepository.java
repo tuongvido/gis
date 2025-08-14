@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface CellTowerRepository extends JpaRepository<CellTower, Integer> {
-    @Query("SELECT c FROM CellTower c WHERE c.mcc = 452 AND c.net = 2 AND c.lat BETWEEN 10.3 AND 11.2 AND c.lon BETWEEN 106.3 AND 107.1")
+    @Query("SELECT c FROM CellTower c WHERE c.mcc = 452 AND c.net = 2 AND c.lat BETWEEN 10.3 AND 11.2 AND c.lon BETWEEN 106.3 AND 107.1 ORDER BY c.id")
     List<CellTower> findMobifoneInHCM();
 
 //    @Query("""
@@ -24,6 +24,7 @@ public interface CellTowerRepository extends JpaRepository<CellTower, Integer> {
     @Query("""
               SELECT c FROM CellTower c
               WHERE (:radioType IS NULL OR :radioType = "" OR c.radio = :radioType)
+              ORDER BY c.id
             """)
     List<CellTower> findAll(int status, int districtId, String radioType, Pageable pageable);
 
