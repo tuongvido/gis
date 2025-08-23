@@ -3,6 +3,7 @@ package com.mobifone.btsmanager.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mobifone.btsmanager.dto.RegionDto;
 import com.mobifone.btsmanager.entity.Region;
 import com.mobifone.btsmanager.repository.RegionRepository;
 import lombok.AllArgsConstructor;
@@ -79,10 +80,14 @@ public class RegionController {
     }
     
     @GetMapping
-    public List<String> getAllRegions() {
-        List<String> district = regionRepository.findAll().stream().map(Region::getName).collect(Collectors.toList());
-        
-        return district;
+    public List<RegionDto> getAllRegions() {
+        return regionRepository.findAll().stream().map(region -> {
+            RegionDto dto = new RegionDto();
+            dto.setId(region.getId());
+            dto.setName(region.getName());
+            dto.setProvince(region.getProvince());
+            return dto;
+        }).collect(Collectors.toList());
     }
 
 }

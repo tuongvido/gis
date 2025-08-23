@@ -1,29 +1,20 @@
 package com.mobifone.btsmanager.entity;
 
 import jakarta.persistence.*;
-
-
 import lombok.Getter;
 import lombok.Setter;
-import org.locationtech.jts.geom.MultiPolygon;
 
 @Entity
-@Table(name = "region")
+@Table(name = "roles")
 @Getter
 @Setter
-public class Region {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true, nullable = false)
     private String name;
-
-    private String province;
-
-    private String type;
-
-    @Column(columnDefinition = "geometry(MultiPolygon,4326)")
-    private MultiPolygon geom;
 
 }

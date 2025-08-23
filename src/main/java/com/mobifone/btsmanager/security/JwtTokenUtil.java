@@ -30,7 +30,8 @@ public class JwtTokenUtil {
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MS))
                 .addClaims(Map.of(
                         "id", user.getId(),
-                        "fullName", user.getFullName()
+                        "fullName", user.getFullName(),
+                        "role", user.getRole().getName()
                 ))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
