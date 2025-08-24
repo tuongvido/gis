@@ -2333,3 +2333,7 @@ INSERT INTO public.cell_tower (area,average_signal,cell,changeable,created,lat,l
 INSERT INTO public.cell_tower (area,average_signal,cell,changeable,created,lat,lon,mcc,mnc,"name",net,radio,"range",region_id,samples,status,"type",unit,updated,user_created,user_updated,construction_unit_id) VALUES
 	 (20022,0,17818,1,0,10.8028,106.7475,452,0,NULL,1,'GSM',1000,14,1,NULL,'-1',0,NULL,NULL,NULL,2),
 	 (20154,0,2577,1,0,10.8097,106.7092,452,0,NULL,1,'GSM',1000,3,1,NULL,'-1',0,NULL,NULL,NULL,8);
+
+update cell_tower ct
+set status = 0
+where 1=1
