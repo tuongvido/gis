@@ -39,5 +39,6 @@ public class CellTower {
     private Long userCreated;
     private Long userUpdated;
     private Long regionId;
+    private Long constructionUnitId;
     private Integer status;
 }
