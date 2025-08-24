@@ -44,7 +44,7 @@ public class BaseStationController {
                 tower.setMcc(Integer.parseInt(line[1]));
                 tower.setNet(Integer.parseInt(line[2]));
                 tower.setArea(Integer.parseInt(line[3]));
-                tower.setCell(Integer.parseInt(line[4]));
+                tower.setCell(String.valueOf(line[4]));
                 tower.setUnit(Integer.parseInt(line[5]));
                 tower.setLon(Double.parseDouble(fixCoordinate(line[6])));
                 tower.setLat(Double.parseDouble(line[7]));

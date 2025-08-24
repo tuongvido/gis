@@ -15,10 +15,11 @@ public interface CellTowerRepository extends JpaRepository<CellTower, Integer> {
 
     @Query("""
               SELECT c FROM CellTower c
-              WHERE (:radioType IS NULL OR :radioType = "" OR c.radio = :radioType)
+              WHERE (:cell IS NULL OR :cell = "" OR c.cell LIKE CONCAT('%', :cell, '%'))
+                AND (:radioType IS NULL OR :radioType = "" OR c.radio = :radioType)
                 AND (:status = -1 OR c.status = :status)
                 AND (:regionId = -1 OR c.regionId= :regionId)
             """)
-    List<CellTower> findAll(int status, int regionId, String radioType, Pageable pageable);
+    List<CellTower> findAll(String cell, int status, int regionId, String radioType, Pageable pageable);
 
 }

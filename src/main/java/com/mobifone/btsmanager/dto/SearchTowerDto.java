@@ -10,6 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SearchTowerDto {
 
+    private String cell;
     private int status;
     private int districtId;
     private String radioType;

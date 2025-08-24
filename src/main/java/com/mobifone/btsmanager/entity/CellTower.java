@@ -25,7 +25,7 @@ public class CellTower {
     private Integer net;
     private Integer area;
     //cellID
-    private Integer cell;
+    private String cell;
     private Integer unit;
     private Integer range;
     private Integer samples;

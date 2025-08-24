@@ -37,13 +37,11 @@ public class CellTowerController {
         List<CellTower> entities = service.getMobifoneCellTowerAtHCM();
         List<CellTowerResponse> responses = new ArrayList<>();
         Map<Long, String> mapRegion = regionService.getAllRegion().stream().collect(Collectors.toMap(Region::getId, Region::getName));
-        String[] statuses = {"ONLINE", "OFFLINE", "MAINTENANCE"};
         for (int i = 0; i < entities.size(); i++) {
             CellTower entity = entities.get(i);
             CellTowerResponse dto = new CellTowerResponse();
             BeanUtils.copyProperties(entity, dto);
 
-            dto.setStatus(statuses[i % statuses.length]);
             dto.setNameDistrict(mapRegion.get(entity.getRegionId()));
             responses.add(dto);
         }
