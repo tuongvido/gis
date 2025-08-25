@@ -30,7 +30,7 @@ public class SecurityConfig {
                         .accessDeniedHandler(customAccessDeniedHandler)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/users/login", "/api/base-station").permitAll()
+                        .requestMatchers("/api/users/login", "/api/base-station", "/api/towers/search", "api/region").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, BasicAuthenticationFilter.class);
