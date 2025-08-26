@@ -41,4 +41,5 @@ public class CellTower {
     private Long regionId;
     private Long constructionUnitId;
     private Integer status;
+    private Integer connections;
 }

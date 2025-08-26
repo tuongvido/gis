@@ -19,7 +19,10 @@ public interface CellTowerRepository extends JpaRepository<CellTower, Integer> {
                 AND (:radioType IS NULL OR :radioType = "" OR c.radio = :radioType)
                 AND (:status = -1 OR c.status = :status)
                 AND (:regionId = -1 OR c.regionId= :regionId)
+                AND (:constructionUnitId = -1 OR c.constructionUnitId = :constructionUnitId)
+              ORDER BY c.id
             """)
-    List<CellTower> findAll(String cell, int status, int regionId, String radioType, Pageable pageable);
+    List<CellTower> findAll(String cell, int status, int regionId, String radioType, Integer constructionUnitId,
+                            Pageable pageable);
 
 }

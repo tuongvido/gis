@@ -32,7 +32,7 @@ public class CellTowerServiceImplement implements ICellTowerService {
         Pageable pageable = Objects.isNull(searchTowerDto.getPageDto()) ? Pageable.unpaged() :
                 PageRequest.of(searchTowerDto.getPageDto().getPageNumber(), searchTowerDto.getPageDto().getPageSize());
         return cellTowerRepository.findAll(searchTowerDto.getCell(), searchTowerDto.getStatus(), searchTowerDto.getDistrictId(),
-                searchTowerDto.getRadioType(), pageable);
+                searchTowerDto.getRadioType(), searchTowerDto.getConstructionUnitId(), pageable);
     }
 
     @Override

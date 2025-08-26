@@ -11,9 +11,10 @@ import lombok.Setter;
 public class SearchTowerDto {
 
     private String cell;
-    private int status;
-    private int districtId;
+    private Integer status;
+    private Integer districtId;
     private String radioType;
-    PageDto pageDto;
+    private Integer constructionUnitId;
+    private PageDto pageDto;
 
 }
