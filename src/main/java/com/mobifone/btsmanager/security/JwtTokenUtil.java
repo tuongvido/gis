@@ -16,7 +16,7 @@ import java.util.Map;
 public class JwtTokenUtil {
 
     private final String SECRET_KEY = "rNnZbI2M7UuNwE1oR7pY8rQ4nTnD4fG5xQ9lO0nHkD4="; // nên để ở config
-    private final long EXPIRATION_MS = 36000; // 1h
+    private final long EXPIRATION_MS = 24*60*60*1000; // 1h
 
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
@@ -54,6 +54,7 @@ public class JwtTokenUtil {
                     .parseClaimsJws(token);
             return true;
         } catch (JwtException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
